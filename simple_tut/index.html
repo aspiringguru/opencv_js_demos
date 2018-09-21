@@ -14,6 +14,8 @@
     <input type="file" id="fileInput" name="file" />
     <img id="imageSrc" alt="No Image" />
     <canvas id="imageCanvas" ></canvas>
+    <!-- find the circles when user clicks button. -->
+    <button type="button" id="circlesButton" class="btn btn-primary">Circle Detection</button>
     <!-- page content -->
     <div class="modal"></div>
     <script type="text/javascript">
@@ -28,17 +30,36 @@
       };
       <!-- when image loaded, update canvas with the uploaded image.  -->
       imgElement.onload = function() {
-        console.log("image loaded. add image to canvas.")
+        console.log("image loaded. add image to canvas.");
         let image = cv.imread(imgElement);
         cv.imshow('imageCanvas', image);
         image.delete();
       };
 
+      document.getElementById('circlesButton').onclick = function() {
+        console.log("button w id=circlesButton click event detected.");
+        this.disabled = true;
+        document.body.classList.add("loading");
+        console.log("start circle detection code.");
+        // circle detection code
+        sleep(1000);
+        console.log("end circle detection code.");
+        this.disabled = false;
+        document.body.classList.remove("loading");
+      };
 
 
       function onOpenCvReady() {
         console.log("function onOpenCvReady called after async loading completed.")
         document.body.classList.remove("loading");
+      }
+      function sleep(milliseconds) {
+        var start = new Date().getTime();
+        for (var i = 0; i < 1e7; i++) {
+          if ((new Date().getTime() - start) > milliseconds){
+            break;
+          }
+        }
       }
     </script>
   </body>
