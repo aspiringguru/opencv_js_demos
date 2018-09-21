@@ -10,9 +10,23 @@
   </head>
   <body>
     <!-- page content -->
+    <input type="file" id="fileInput" name="file" />
+    <img id="imageSrc" alt="No Image" />
+    <!-- page content -->
     <div class="modal"></div>
     <script type="text/javascript">
       document.body.classList.add("loading");
+
+      <!--  -->
+      let imgElement = document.getElementById('imageSrc');
+      let inputElement = document.getElementById('fileInput');
+      inputElement.onchange = function() {
+        console.log("inputElement changed.")
+        imgElement.src = URL.createObjectURL(event.target.files[0]);
+      };
+
+
+
       function onOpenCvReady() {
         console.log("function onOpenCvReady called after async loading completed.")
         document.body.classList.remove("loading");
