@@ -10,8 +10,10 @@
   </head>
   <body>
     <!-- page content -->
+    <!-- will tidy up formatting later, just loading objects for now.  -->
     <input type="file" id="fileInput" name="file" />
     <img id="imageSrc" alt="No Image" />
+    <canvas id="imageCanvas" ></canvas>
     <!-- page content -->
     <div class="modal"></div>
     <script type="text/javascript">
@@ -23,6 +25,13 @@
       inputElement.onchange = function() {
         console.log("inputElement changed.")
         imgElement.src = URL.createObjectURL(event.target.files[0]);
+      };
+      <!-- when image loaded, update canvas with the uploaded image.  -->
+      imgElement.onload = function() {
+        console.log("image loaded. add image to canvas.")
+        let image = cv.imread(imgElement);
+        cv.imshow('imageCanvas', image);
+        image.delete();
       };
 
 
