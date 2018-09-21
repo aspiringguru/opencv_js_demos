@@ -4,7 +4,6 @@
     <meta charset="utf-8">
     <title>title</title>
     <link rel="stylesheet" type="text/css" href="style.css">
-    <script src="script.js"></script>
     <!-- load opencv asynchronously since it is a large file & will be slow to load. -->
     <!-- when opencv_331.js is loaded, execute function onOpenCvReady -->
     <script async src="opencv_331.js" onload="onOpenCvReady();" type="text/javascript"></script>
@@ -15,6 +14,7 @@
     <script type="text/javascript">
       document.body.classList.add("loading");
       function onOpenCvReady() {
+        console.log("function onOpenCvReady called after async loading completed.")
         document.body.classList.remove("loading");
       }
     </script>
