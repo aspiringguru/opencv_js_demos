@@ -65,10 +65,19 @@
             console.log("at i=", i, ", x = ", x, ", y=", y, ", radius = ", radius )
             //now draw the circles detected
             let center = new cv.Point(x, y);
+            //ch = abbreviation for cross hairs
+            chl = 10 //chl = length of cross hairs
+            let left_ch = new cv.Point(x-chl,y);
+            let right_ch = new cv.Point(x+chl,y);
+            let top_ch = new cv.Point(x,y-chl);
+            let bottom_ch = new cv.Point(x,y+chl);
+            chw = 2 // chw = abbreviation for width of cross hairs
+
             // 3 = line thickness
             //https://docs.opencv.org/3.4.1/d6/d6e/group__imgproc__draw.html
             cv.circle(displayMat, center, radius, [0, 0, 0, 255], 5);
-
+            cv.line(displayMat, left_ch, right_ch, [0, 0, 0, 255], chw);
+            cv.line(displayMat, top_ch, bottom_ch, [0, 0, 0, 255], chw);
         }
         cv.imshow('imageCanvas', displayMat);
         //delete Mat objects - good memory management.
