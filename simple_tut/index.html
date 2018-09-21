@@ -41,7 +41,6 @@
       document.getElementById('circlesButton').onclick = function() {
         console.log("button w id=circlesButton click event detected.");
         this.disabled = true;
-        document.body.classList.add("loading");
         console.log("start circle detection code.");
         // Opencv loads from imageCanvas which is created from image file loaded.
         let srcMat = cv.imread('imageCanvas');
