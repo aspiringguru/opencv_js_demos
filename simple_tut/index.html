@@ -2,7 +2,12 @@
 <html lang="en">
   <head>
     <meta charset="utf-8">
-    <title>title</title>
+    <title>smarterdata.tk</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <link rel="stylesheet" type="text/css" href="style.css">
     <!-- load opencv asynchronously since it is a large file & will be slow to load. -->
     <!-- when opencv_331.js is loaded, execute function onOpenCvReady -->
@@ -10,20 +15,39 @@
   </head>
   <body>
     <!-- page content -->
-    <!-- will tidy up formatting later, just loading objects for now.  -->
-    <a href="circles_to_upload.png" download>Try this file.</a>
-    <input type="file" id="fileInput" name="file" />
-    <img id="imageSrc" alt="No Image" />
-    <canvas id="imageCanvas" ></canvas>
-    <!-- find the circles when user clicks button. -->
-    <button type="button" id="circlesButton" class="btn btn-primary">Circle Detection</button>
-    <!-- download link created in function -->
-    <a href="#" id="downloadButton">Download Image</a>
-    <!-- page content -->
+    <div class="jumbotron text-center">
+      <h1>Opencv Demo</h1>
+      <p>Detect images, markup image with cross hairs at centre and draw circle around circle shape.</p>
+      <p>Draw your own circles in paint, save, upload,
+        <a href="circles_to_upload.png" download>or use one of our examples </a>
+        <a href="test_shapes.png" download> or this.</a>
+        (does not work well with photos, but hey, break it.)
+      </p>
+      <p>1. <input  type="file" id="fileInput" name="file" /></p>
+      <p>2. <button type="button" id="circlesButton" class="btn btn-primary">Circle Detection</button></p>
+      <p>3. <a href="#" id="downloadButton">Download Markedup Image</a></p>
+    </div>
+
+    <div class="container">
+      <div class="row">
+        <div class="col-sm-6">
+          <h3>Original Image.</h3>
+          <img class = "img-responsive" id="imageSrc" alt="" />
+          <!-- NB img-responsive works when image is reposted on the canvas  -->
+          <!-- find the circles when user clicks button. -->
+
+        </div>
+        <div class="col-sm-6">
+          <h3>Marked up Image.</h3>
+          <canvas id="imageCanvas" ></canvas>
+        </div>
+      </div>
+    </div>
+
+
     <div class="modal"></div>
     <script type="text/javascript">
       document.body.classList.add("loading");
-
       <!--  -->
       let imgElement = document.getElementById('imageSrc');
       let inputElement = document.getElementById('fileInput');
