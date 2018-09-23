@@ -17,16 +17,15 @@
     <!-- page content -->
     <div class="jumbotron text-center">
       <h1>Opencv Demo</h1>
-      <p>Detect images, markup image with cross hairs at centre and draw circle around circle shape.</p>
-      <p>Draw your own circles in paint, save, upload,
-        <a href="circles_to_upload.png" download>or use one of our examples </a>
-        <a href="test_shapes.png" download> or this.</a>
-        (does not work well with photos, but hey, break it.)
+      <p>Detect circles in images, markup image with cross hairs at centre and draw circle around circle shape.</p>
+      <p>Draw your own circles in paint,
+        <a href="circles_to_upload.png" download> use one of </a>
+        <a href="test_shapes.png" download> our examples</a>
+        (photos do not work well, but hey, break it.) save, then upload.
       </p>
         1. <label class="btn btn-default btn-file">
-            <p><input  type="file" style="display: none;" id="fileInput" name="file" />Upload File</input></p>
+            <p><input  type="file" id="fileInput" name="file" />Upload File</input></p>
         </label>
-
         <p>2. <button type="button" id="circlesButton" class="btn btn-primary">Circle Detection</button></p>
         <p>3. <a href="#" id="downloadButton">Download Markedup Image</a></p>
     </div>
